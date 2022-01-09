@@ -107,7 +107,7 @@ const IndexPage = ({ product }) => {
             <Flex sx={{ width: "100%", justifyContent: "center", mt: [3] }}>
               <Flex
                 as="a"
-                href="https://github.com/medusajs/medusa-express"
+                href="https://github.com/medusajs/medusa-express-nextjs"
                 target="_blank"
                 rel="noreferrer"
                 mx={2}
