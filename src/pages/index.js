@@ -29,7 +29,7 @@ const IndexPage = ({ product }) => {
                 borderBottom: "1px solid #E5E7EB",
               }}
             >
-              <Image src={"/medusa.png"} width={"200px"} height={"42px"} />
+              <Image src={"/medusa-svg.svg"} width={"200px"} height={"42px"} />
             </Text>
             <Text variant="landingpageText">
               What if we could buy and sell products via a link that sends you
