@@ -129,7 +129,7 @@ const theme = {
     landingpageText: {
       py: ".1em",
       fontSize: "12px",
-      color: "darkGrey",
+      color: "#111827",
       fontFamily: "Inter",
       mb: "8px",
       fontWeight: 300,

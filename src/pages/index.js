@@ -31,7 +31,7 @@ const IndexPage = ({ product }) => {
             >
               <Image src={"/medusa.png"} width={"200px"} height={"42px"} />
             </Text>
-            <Text variant="landingpageText" sx={{ color: "#111827" }}>
+            <Text variant="landingpageText">
               What if we could buy and sell products via a link that sends you
               directly to a check-out flow?
             </Text>
@@ -101,6 +101,56 @@ const IndexPage = ({ product }) => {
                   rel="noreferrer"
                 >
                   3. Add your own products with Medusa Admin
+                </a>
+              </Text>
+            </Flex>
+            <Flex
+              sx={{
+                borderTop: "1px solid #E5E7EB",
+                paddingTop: "8px",
+                flexDirection: "column",
+              }}
+            >
+              <Text
+                variant="landingpageText"
+                sx={{ my: "8px", color: "#111827", fontWeight: "600" }}
+              >
+                Built with:
+              </Text>
+              <Text
+                variant="landingpageText"
+                sx={{ mb: "8px", "& a": { color: "#111827" } }}
+              >
+                <a href="https://medusajs.com" target="_blank" rel="noreferrer">
+                  Medusa: Commerce engine
+                </a>
+              </Text>
+              <Text
+                variant="landingpageText"
+                sx={{ mb: "8px", "& a": { color: "#111827" } }}
+              >
+                <a href="https://nextjs.org" target="_blank" rel="noreferrer">
+                  Next.js: React framework
+                </a>
+              </Text>
+              <Text
+                variant="landingpageText"
+                sx={{ mb: "8px", "& a": { color: "#111827" } }}
+              >
+                <a href="https://stripe.com" target="_blank" rel="noreferrer">
+                  Stripe: Payment provider
+                </a>
+              </Text>
+              <Text
+                variant="landingpageText"
+                sx={{ mb: "8px", "& a": { color: "#111827" } }}
+              >
+                <a
+                  href="https://github.com/medusajs/medusa/tree/master/packages/medusa-react"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Medusa React: Hooks and components for Medusa
                 </a>
               </Text>
             </Flex>

@@ -26,6 +26,14 @@ Medusa is an open-source headless commerce engine that enables developers to cre
 
 <br/>
 
+## Built with
+### [Medusa](https://www.medusajs.com): Commerce engine
+### [Next.js](https://nextjs.org/): React framework
+### [Stripe](https://stripe.com/en-gb-dk): Payment provider
+### [Medusa React](https://github.com/medusajs/medusa/tree/master/packages/medusa-react): Hooks and components for Medusa
+
+<br/>
+
 **Prerequisites**: To use Medusa Express, you need a Medusa server. Check out [medusa-starter-default](https://github.com/medusajs/medusa-starter-default) for a quick setup.
 
 <br/>
