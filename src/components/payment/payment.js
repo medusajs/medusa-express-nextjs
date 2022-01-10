@@ -7,7 +7,7 @@ import PaymentForm from "./payment-form"
 const STRIPE_KEY = process.env.NEXT_PUBLIC_STRIPE_API_KEY || ""
 const stripePromise = loadStripe(STRIPE_KEY)
 
-const Payment = ({ handleSubmit }) => {
+const Payment = ({ handleSubmit, setLoading }) => {
   const { cart } = useCart()
 
   const stripeSession = useMemo(() => {
@@ -28,7 +28,11 @@ const Payment = ({ handleSubmit }) => {
 
   return (
     <Elements stripe={stripePromise} options={options}>
-      <PaymentForm session={stripeSession} handleSubmit={handleSubmit} />
+      <PaymentForm
+        session={stripeSession}
+        handleSubmit={handleSubmit}
+        setLoading={setLoading}
+      />
     </Elements>
   )
 }

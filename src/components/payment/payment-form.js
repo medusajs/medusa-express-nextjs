@@ -1,10 +1,9 @@
-import React, { useState } from "react"
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import { Box, Button, Flex, Text } from "@theme-ui/components"
 import { useCart } from "medusa-react"
+import React, { useState } from "react"
 
-const PaymentForm = ({ session, handleSubmit }) => {
-  const [loading, setLoading] = useState(false)
+const PaymentForm = ({ session, handleSubmit, setLoading }) => {
   const [errorMessage, setErrorMessage] = useState()
 
   const { cart } = useCart()
@@ -71,23 +70,6 @@ const PaymentForm = ({ session, handleSubmit }) => {
 
   return (
     <form onSubmit={handlePayment}>
-      {loading && (
-        <Flex
-          sx={{
-            position: "absolute",
-            bg: "#ffffff",
-            opacity: 0.8,
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Spinner />
-        </Flex>
-      )}
       {errorMessage && <Text sx={{ fontSize: "10px" }}>{errorMessage}</Text>}
       <Box variant="box.paymentField">
         <CardElement />
