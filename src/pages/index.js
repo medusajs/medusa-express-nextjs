@@ -2,7 +2,8 @@ import Head from "next/head"
 import Image from "next/image"
 import { useRouter } from "next/router"
 import * as React from "react"
-import { Card, Flex, Text } from "theme-ui"
+import { Button, Card, Flex, Text } from "theme-ui"
+import CodeSnippet from "../components/code-snippet"
 import Layout from "../components/layout/layout"
 import { client } from "../utils/client"
 
@@ -31,28 +32,38 @@ const IndexPage = ({ product }) => {
             >
               <Image src={"/medusa-svg.svg"} width={"200px"} height={"42px"} />
             </Text>
-            <Text variant="landingpageText">
-              What if we could buy and sell products via a link that sends you
-              directly to a check-out flow?
+            <Text variant="heading3" sx={{ mb: "16px" }}>
+              Welcome!
             </Text>
             <Text variant="landingpageText">
-              We've been experimenting with this idea and are now ready to
-              preview a beta version.
+              Medusa Express is a drop-in storefront for your{" "}
+              <a href="https://github.com/medusajs/medusa" target={"_blank"}>
+                Medusa
+              </a>{" "}
+              store, that automatically creates pages for the products in your
+              catalog, each of them optimized to make the purchasing experience
+              as frictionless as possible, by bundling the checkout flow
+              alongside the product.
             </Text>
-            <Text variant="landingpageText" sx={{ mb: "16px" }}>
-              An open-source alternative to Stripe payment links.
-            </Text>
-            <Text
-              variant="landingpageText"
+            <Button
+              variant="cta"
               sx={{
-                mb: "16px",
-                color: "#3B82F6",
-                fontWeight: 500,
-                cursor: "pointer",
+                my: "16px",
               }}
               onClick={() => router.push(`/${product.handle}`)}
             >
               Explore the demo
+            </Button>
+            <Text
+              as={"a"}
+              variant="landingpageLink"
+              sx={{
+                mb: "16px",
+              }}
+              target="_blank"
+              href="https://www.medusajs.com/post/introducing-medusa-express"
+            >
+              Read more
             </Text>
             <Flex
               sx={{
@@ -67,41 +78,10 @@ const IndexPage = ({ product }) => {
               >
                 Get your own in only a couple of minutes
               </Text>
-              <Text
-                variant="landingpageText"
-                sx={{ mb: "16px", "& a": { color: "#111827" } }}
-              >
-                <a
-                  href="https://github.com/medusajs/medusa#-quickstart"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  1. Create a Medusa server
-                </a>
-              </Text>
-              <Text
-                variant="landingpageText"
-                sx={{ mb: "16px", "& a": { color: "#111827" } }}
-              >
-                <a
-                  href="https://github.com/medusajs/medusa-express#-quick-start"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  2. Setup Medusa Express
-                </a>
-              </Text>
-              <Text
-                variant="landingpageText"
-                sx={{ mb: "16px", "& a": { color: "#111827" } }}
-              >
-                <a
-                  href="https://github.com/medusajs/admin#-quickstart"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  3. Add your own products with Medusa Admin
-                </a>
+              <Text sx={{ mb: "24px" }}>
+                <CodeSnippet type={"cli"}>
+                  npx create-medusa-app@latest
+                </CodeSnippet>
               </Text>
             </Flex>
             <Flex
@@ -118,40 +98,36 @@ const IndexPage = ({ product }) => {
                 Built with:
               </Text>
               <Text
-                variant="landingpageText"
-                sx={{ mb: "8px", "& a": { color: "#111827" } }}
+                as="a"
+                variant="landingpageLink"
+                href="https://medusajs.com"
+                target="_blank"
               >
-                <a href="https://medusajs.com" target="_blank" rel="noreferrer">
-                  Medusa: Commerce engine
-                </a>
+                Medusa: Commerce engine
               </Text>
               <Text
-                variant="landingpageText"
-                sx={{ mb: "8px", "& a": { color: "#111827" } }}
+                target="_blank"
+                as="a"
+                variant="landingpageLink"
+                href="https://nextjs.org"
               >
-                <a href="https://nextjs.org" target="_blank" rel="noreferrer">
-                  Next.js: React framework
-                </a>
+                Next.js: React framework
               </Text>
               <Text
-                variant="landingpageText"
-                sx={{ mb: "8px", "& a": { color: "#111827" } }}
+                target="_blank"
+                as="a"
+                variant="landingpageLink"
+                href="https://stripe.com"
               >
-                <a href="https://stripe.com" target="_blank" rel="noreferrer">
-                  Stripe: Payment provider
-                </a>
+                Stripe: Payment provider
               </Text>
               <Text
-                variant="landingpageText"
-                sx={{ mb: "8px", "& a": { color: "#111827" } }}
+                as="a"
+                variant="landingpageLink"
+                target="_blank"
+                href="https://github.com/medusajs/medusa/tree/master/packages/medusa-react"
               >
-                <a
-                  href="https://github.com/medusajs/medusa/tree/master/packages/medusa-react"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Medusa React: Hooks and components for Medusa
-                </a>
+                Medusa React: Hooks for Medusa
               </Text>
             </Flex>
             <Flex sx={{ width: "100%", justifyContent: "center", mt: [3] }}>
