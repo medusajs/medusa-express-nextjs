@@ -2,7 +2,7 @@ import { useCompleteCart } from "medusa-react"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import React, { useEffect } from "react"
-import { Flex } from "theme-ui"
+import { Card, Flex } from "theme-ui"
 import Layout from "../components/layout/layout"
 import Spinner from "../components/spinner/spinner"
 
@@ -31,29 +31,31 @@ const Completing = () => {
         <title>Submitting order...</title>
         <meta name="description" content="One-page checkout" />
       </Head>
-      <Flex
-        sx={{
-          position: "relative",
-          width: "100%",
-          flexDirection: "column",
-        }}
-      >
+      <Card variant="container" sx={{ backgroundColor: "#F3F4F6" }}>
         <Flex
           sx={{
-            position: "absolute",
-            bg: "#ffffff",
-            opacity: 0.8,
-            top: 0,
-            left: 0,
+            position: "relative",
             width: "100%",
-            height: "100%",
-            justifyContent: "center",
-            alignItems: "center",
+            flexDirection: "column",
           }}
         >
-          <Spinner />
+          <Flex
+            sx={{
+              position: "absolute",
+              bg: "#ffffff",
+              opacity: 0.8,
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Spinner />
+          </Flex>
         </Flex>
-      </Flex>
+      </Card>
     </Layout>
   )
 }
