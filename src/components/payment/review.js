@@ -17,8 +17,10 @@ const Review = ({ cart }) => {
         alt={item.title}
         sx={{
           height: "90px",
-          width: "auto",
+          width: "50%",
           borderRadius: "4px",
+          objectFit: "contain",
+          objectPosition: "center center",
         }}
       />
       <Flex
