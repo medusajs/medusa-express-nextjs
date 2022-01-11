@@ -42,14 +42,20 @@ Medusa is an open-source headless commerce engine that enables developers to cre
 
 ### 1. Create your Medusa Express project
 
+#### Use npx and select medusa.express (recommended)
+```zsh  
+  npx create-medusa-app@latest
+```
+
+#### Use git clone
 ```zsh  
   git clone --depth=1 https://github.com/medusajs/medusa-express-nextjs medusa-express
 ```
 
-### 2. Install dependencies
+### 2. Navigate to project and install dependencies
 
 ```zsh
-  cd medusa-express
+  cd <your-express-folder>
   
   yarn
   # or
@@ -67,6 +73,12 @@ NEXT_PUBLIC_MEDUSA_BACKEND_URL=http://localhost:9000
 Copy the template into a file used for local development:
 ```zsh
 mv .env.template .env.local
+```
+
+Add Stripe API key as environment variable to complete orders:
+```zsh
+# Stripe key is required for completing orders
+NEXT_PUBLIC_STRIPE_API_KEY=pk_test_... 
 ```
 
 Your Medusa server runs locally on port 9000 by default. Make sure to update the above environment variable, if you've changed the port.
