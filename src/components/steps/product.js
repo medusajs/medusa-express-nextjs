@@ -1,7 +1,7 @@
-import React, { useState } from "react"
 import { Card, Flex } from "@theme-ui/components"
 import { useCart } from "medusa-react"
 import Image from "next/image"
+import React, { useState } from "react"
 import ProductSelection from "../product-selection"
 import Spinner from "../spinner/spinner"
 
@@ -61,7 +61,7 @@ const Product = ({
         >
           Product
           {cart?.id && (
-            <Image src={"/check.png"} height={"18px"} width={"13px"} />
+            <Image src={"/check.png"} height={"11px"} width={"16px"} />
           )}
         </Card>
       )}

@@ -47,7 +47,7 @@ const Shipping = ({
         >
           Shipping and info
           {hasShipping && (
-            <Image src={"/check.png"} height={"18px"} width={"13px"} />
+            <Image src={"/check.png"} height={"11px"} width={"16px"} />
           )}
         </Card>
       )}
