@@ -1,6 +1,6 @@
 import { Flex, Text } from "@theme-ui/components"
+import { formatVariantPrice } from "medusa-react"
 import React from "react"
-import { getFrom } from "../../../utils/get-from"
 
 const Info = ({ product, region }) => {
   return (
@@ -44,9 +44,9 @@ const Info = ({ product, region }) => {
             mb: "1em",
           }}
         >
-          {`${getFrom(product.variants, {
-            currency_code: region.currency_code,
-            tax_rate: region.tax_rate,
+          {`${formatVariantPrice({
+            variant: product.variants[0],
+            region,
           })}`}
         </Text>
       </Flex>
