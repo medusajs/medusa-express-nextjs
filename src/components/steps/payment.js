@@ -33,12 +33,11 @@ const Payment = ({ region, country, activeStep }) => {
   const [fullCountry, setFullCountry] = useState("")
 
   const submitPayment = async () => {
-    setLoading(true)
-    // set Stripe as payment provider
-    await pay.mutateAsync({ provider_id: "stripe" })
-    // complete cart and go to order confirmation
-    const { data } = await completeCheckout.mutateAsync()
-    return router.push(`/completed?oid=${data.id}`)
+    // set Stripe as payment provider and navigate to confirmation page to complete order
+    pay.mutate(
+      { provider_id: "stripe" },
+      { onSuccess: () => router.push(`/completing?cid=${cart.id}`) }
+    )
   }
 
   useEffect(() => {
@@ -60,7 +59,7 @@ const Payment = ({ region, country, activeStep }) => {
               flexDirection: "column",
             }}
           >
-            {loading && (
+            {(pay.isLoading || loading) && (
               <Flex
                 sx={{
                   position: "absolute",

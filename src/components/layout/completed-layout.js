@@ -6,18 +6,14 @@ import OrderConfirmation from "../steps/order-confirmation"
 import Layout from "./layout"
 
 const CompletedLayout = () => {
-  // const [order, setOrder] = useState(null)
   const router = useRouter()
-  const { order } = useOrder(router.query.oid)
 
-  if (!order) {
-    return null
-  }
+  const { order } = useOrder(router.query.oid)
 
   return (
     <Layout>
-      <Card variant="container">
-        {order && (
+      {order && (
+        <Card variant="container">
           <>
             <OrderConfirmation order={order} />
             <Flex
@@ -31,8 +27,8 @@ const CompletedLayout = () => {
               }}
             ></Flex>
           </>
-        )}
-      </Card>
+        </Card>
+      )}
     </Layout>
   )
 }
