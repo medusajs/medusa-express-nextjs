@@ -7,7 +7,7 @@ import Contact from "./contact"
 import Delivery from "./delivery"
 
 const Forms = ({ country, region, nextStep, setLoading }) => {
-  const { updateCart, cart } = useCart()
+  const { updateCart, addShippingMethod, cart } = useCart()
 
   const [isValid, setIsValid] = useState({
     contact: false,
@@ -71,6 +71,11 @@ const Forms = ({ country, region, nextStep, setLoading }) => {
             city: delivery.city,
             phone: contact.phone,
           },
+        })
+        .then(() => {
+          return addShippingMethod.mutateAsync({
+            option_id: delivery.shipping_option,
+          })
         })
         .finally(() => {
           setLoading(false)

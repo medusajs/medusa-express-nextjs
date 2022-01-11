@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react"
 import PaymentDetails from "../payment/payment"
 import Review from "../payment/review"
 import Total from "../payment/total"
+import Spinner from "../spinner/spinner"
 
 const DeliveryReview = ({ delivery, displayCountry }) => (
   <Flex
@@ -24,7 +25,8 @@ const DeliveryReview = ({ delivery, displayCountry }) => (
   </Flex>
 )
 
-const Payment = ({ region, country, activeStep, setLoading }) => {
+const Payment = ({ region, country, activeStep }) => {
+  const [loading, setLoading] = useState(false)
   const router = useRouter()
   const { cart, pay, completeCheckout } = useCart()
 
@@ -51,28 +53,53 @@ const Payment = ({ region, country, activeStep, setLoading }) => {
     <Flex variant="layout.stepContainer">
       {activeStep === "payment" ? (
         <Card variant="container">
-          <Text variant="header3">Payment</Text>
-          <Box mt={"16px"}>
-            <Review cart={cart} /> <Total cart={cart} />
-            <DeliveryReview
-              displayCountry={fullCountry}
-              delivery={cart.shipping_address}
-            />
-            <Flex
-              sx={{
-                flexDirection: "column",
-                py: "16px",
-              }}
-            >
-              <Text variant="subheading" sx={{ mb: "8px" }}>
-                Payment method
-              </Text>
-              <PaymentDetails
-                handleSubmit={submitPayment}
-                setLoading={setLoading}
+          <Flex
+            sx={{
+              position: "relative",
+              width: "100%",
+              flexDirection: "column",
+            }}
+          >
+            {loading && (
+              <Flex
+                sx={{
+                  position: "absolute",
+                  bg: "#ffffff",
+                  opacity: 0.8,
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Spinner />
+              </Flex>
+            )}
+            <Text variant="header3">Payment</Text>
+            <Box mt={"16px"}>
+              <Review cart={cart} /> <Total cart={cart} />
+              <DeliveryReview
+                displayCountry={fullCountry}
+                delivery={cart.shipping_address}
               />
-            </Flex>
-          </Box>
+              <Flex
+                sx={{
+                  flexDirection: "column",
+                  py: "16px",
+                }}
+              >
+                <Text variant="subheading" sx={{ mb: "8px" }}>
+                  Payment method
+                </Text>
+                <PaymentDetails
+                  handleSubmit={submitPayment}
+                  setLoading={setLoading}
+                />
+              </Flex>
+            </Box>
+          </Flex>
         </Card>
       ) : (
         <Card variant="accordionTrigger">Payment</Card>

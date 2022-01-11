@@ -39,9 +39,11 @@ const ProductPage = ({ product, regions }) => {
 export async function getStaticPaths() {
   const { products } = await client.products.list()
 
-  const paths = products.map(product => ({
-    params: { handle: product.handle },
-  }))
+  const paths = products
+    .map(product => ({
+      params: { handle: product.handle },
+    }))
+    .filter(p => !!p.params.handle)
 
   return { paths, fallback: false }
 }
@@ -51,7 +53,7 @@ export async function getStaticProps({ params }) {
   const { regions } = await client.regions.list()
 
   // handles are unique, so we'll always only be fetching a single product
-  const [product, ...rest] = response.products
+  const [product] = response.products
 
   // Pass post data to the page via props
   return { props: { product, regions } }

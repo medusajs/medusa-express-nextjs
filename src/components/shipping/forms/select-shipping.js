@@ -1,6 +1,6 @@
+import React, { useEffect, useState } from "react"
 import { Box, Flex, Text } from "@theme-ui/components"
 import { formatAmount, useCart, useCartShippingOptions } from "medusa-react"
-import React, { useEffect, useState } from "react"
 
 const ShippingOption = ({ selected, option, region, onClick }) => {
   return (
@@ -60,10 +60,9 @@ const ShippingOption = ({ selected, option, region, onClick }) => {
   )
 }
 
-const SelectShipping = ({ formik, name, set, region, setLoading }) => {
-  const { cart, addShippingMethod } = useCart()
+const SelectShipping = ({ formik, name, set, region }) => {
+  const { cart } = useCart()
   const { shipping_options } = useCartShippingOptions(cart.id)
-  const [added, setAdded] = useState("")
 
   const handleClick = async id => {
     const alreadySelected = cart?.shipping_methods?.some(
@@ -74,12 +73,7 @@ const SelectShipping = ({ formik, name, set, region, setLoading }) => {
       return
     }
 
-    setLoading(true)
-    setAdded(id)
     formik.setFieldValue(`${set}.${name}`, id)
-    await addShippingMethod.mutateAsync({ option_id: id })
-    setAdded("")
-    setLoading(false)
   }
 
   useEffect(() => {
@@ -90,21 +84,15 @@ const SelectShipping = ({ formik, name, set, region, setLoading }) => {
 
   return (
     <Flex sx={{ flexDirection: "column" }}>
-      {shipping_options?.map(s => {
-        const res = cart.shipping_methods.find(
-          so => s.id === so.shipping_option_id
-        )
-
-        return (
-          <ShippingOption
-            key={s.id}
-            onClick={() => handleClick(s.id)}
-            selected={res !== undefined || added === s.id}
-            option={s}
-            region={region}
-          />
-        )
-      })}
+      {shipping_options?.map(s => (
+        <ShippingOption
+          key={s.id}
+          onClick={() => handleClick(s.id)}
+          selected={s.id === formik.values[set][name]}
+          option={s}
+          region={region}
+        />
+      ))}
     </Flex>
   )
 }
