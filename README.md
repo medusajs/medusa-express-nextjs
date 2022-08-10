@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://medusajs.com/">
-    <img alt="Medusa" src="./public/medusa-svg.svg" width="400" />
+    <img alt="Medusa" src="https://i.imgur.com/Tk4Q9P3.png" width="200" />
   </a>
 </p>
 <h1 align="center">
