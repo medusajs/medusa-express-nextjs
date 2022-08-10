@@ -42,7 +42,7 @@ Medusa is an open-source headless commerce engine that enables developers to cre
 
 ### Deploy in 5 minutes
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://github.com/medusajs/medusa-express-nextjs)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/medusajs/medusa-express-nextjs)
 
 ### 1. Create your Medusa Express project
 
